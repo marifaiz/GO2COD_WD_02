@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Header from './components/Header'; // Import the Header component
+import Quiz from './components/Quiz'; // Import the Quiz component
 
 function App() {
+  const [showQuiz, setShowQuiz] = useState(false); // State to show the quiz
+  const [score, setScore] = useState(0);
+
+  // Start quiz
+  const handleStartQuiz = () => {
+    setShowQuiz(true);
+    setScore(0); // Reset score when starting the quiz
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header handleStartQuiz={handleStartQuiz} />
+      {showQuiz && <Quiz setScore={setScore} score={score} />}
     </div>
   );
 }
 
 export default App;
+
