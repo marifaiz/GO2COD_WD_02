@@ -53,8 +53,19 @@ function Quiz({ setScore, score }) {
     }, 2000);
   };
 
+  // Calculate progress as a percentage
+  const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+
   return (
     <div className="quiz">
+      {/* Progress Bar */}
+      <div className="progress-bar-container">
+        <div
+          className="progress-bar"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+
       {showResults ? (
         <div className="quiz-results">
           <h2>Quiz Completed!</h2>
